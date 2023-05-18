@@ -1,0 +1,130 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<html lang="ja">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=Shift_JIS">
+<meta http-equiv="Content-Style-Type" content="text/css">
+<link rel="stylesheet" href="common.css" type="text/css">
+<title>きせかえシステム"siori" マニュアル</title>
+</head>
+<body>
+<div id="all">
+
+<h1>補足説明</h1>
+
+<h2>モード切替について</h2>
+
+<p>テンプレートファイルの左上には「モード切替」が表示されます。
+クリックすると標準モードと互換モードを交互に切り替えます。モードの詳細は下記の通りです。</p>
+
+<dl>
+<dt>標準モード</dt>
+<dd>通常の動作モードです。可能な場合はセルの透明部のつかみ判定を行います。
+セット切り替え時はセルの位置が保持され、リセットされることはありません。</dd>
+
+<dt>互換モード</dt>
+<dd>過去のバージョンと同様の動作を行います。セルの透明部のつかみ判定は行いません。セット切り替え時はセルの位置がリセットされます。
+標準モードが正常に動作しない場合はこのモードにすると改善されることがあります。
+IE6は仕様によりこのモードではフルカラーPNGを正常に表示できなくなります。</dd>
+</dl>
+
+<h2 id="pickcel">セルの透明部のつかみ判定について</h2>
+
+<p>過去のバージョンでは、セルをドラッグする際は透明部分もドラッグの対象となっていました。
+本バージョンは、HTML5の機能や画像フィルター機能を使う新しい方式に対応し、
+下図のように透明部分がドラッグされることがなくなりました。
+これによって重なり合っているセルや、小さなアクセサリーなどのセルを動かしやすくなります。</p>
+
+<p><img src="img/pickcel.png" width="665" height="372" alt="つかみ判定の新方式と従来方式の違い"></p>
+
+<p>但しこの新しい方式は、下記の条件では使用できません。その場合は透明部分をドラッグの対象にする従来の方式で動作します。</p>
+
+<ul>
+<li>ブラウザがHTML5 Canvasに対応していない場合。IE6,7,8 は対応していませんが、代わりに画像フィルター機能で動作します。</li>
+<li>IE6,7,8 においてセルがPNG形式ではない場合。IEの画像フィルター機能の動作にはPNG形式が必要です。</li>
+<li>ローカル環境ではHTML5の仕様によるセキュリティ制限で使用できないことがあります。
+その場合はブラウザの設定を変更することで、使用可能になることがあります。
+ブラウザ別の設定方法について作者のサイトに今後掲載する予定です。</li>
+</ul>
+
+<p>条件によって使用できない場合がありますので、着せ替えを製作される際はモード切替で互換モードに切り替えて、
+従来の方式でも遊べることをご確認されることをおすすめします。</p>
+
+<h2>しおりのどうぐばこの動作設定について</h2>
+
+<p>しおりのどうぐばこの動作設定を行う場合は、<em class="file">tool.html</em> をテキストエディタで開いて、
+先頭の方にある設定項目を編集します。項目の詳細は下記の通りです。</p>
+
+<dl>
+<dt>setmax</dt>
+<dd>セットの最大数を指定します。初期値は 5 です。詳細は<a href="#addset">セットの数を増やす方法</a>をご覧ください。</dd>
+
+<dt>safemode</dt>
+<dd>
+<p>0 を指定すると標準モードに、1 を指定すると互換モードになります。初期値は 0 です。</p>
+
+<p>テンプレートファイルと同様に、しおりのどうぐばこもモード切替が可能です。
+互換モードにすると、セルの透明部のつかみ判定は行われません。
+通常変更の必要はありませんが、正常に動作しない場合は互換モードにすると改善されることがあります。</p>
+</dd>
+
+<dt>startMargin</dt>
+<dd>
+<p>セル移動時の遊び範囲を指定します。単位はピクセルです。初期値は 4 です。</p>
+
+<p>セルを移動する際に、わずかな操作では移動しないように遊び範囲が設けられています。
+これは Photoshop の移動ツールに似た動作で、セルを触ってステータス表示を確認する際などに、
+間違って移動してしまう可能性を減らします。0 を指定すると過去のバージョンと同じ動作になります。</p>
+</dd>
+
+<dt>movStatMax</dt>
+<dd>ステータスに表示するセルの最大数を指定します。初期値は 5 です。
+数が多いグループ化セルは、ここで指定した値が表示数の上限となります。</dd>
+</dl>
+
+<h2 id="addset">セットの数を増やす方法</h2>
+
+<p>セットの最大数は通常は５個ですが、例えば１０個に増やす場合は、
+テキストエディタでファイルを次のように変更します（太字部分を追加／変更してください）。</p>
+
+<dl>
+<dt>tool.html</dt>
+<dd>
+  <p>１５行付近のセット最大数を変更します。</p>
+
+  <pre>
+setmax: <em>10</em>    // セット最大数
+</pre>
+
+<dt>index.html</dt>
+<dd>
+  <p>文末付近の切り替えボタンを増やします。</p>
+
+  <pre>
+&lt;label&gt;&lt;input type="radio" name="setchg" value="0" onclick="sets.change(0)" checked&gt;0&lt;/label&gt;
+&lt;label&gt;&lt;input type="radio" name="setchg" value="1" onclick="sets.change(1)"&gt;1&lt;/label&gt;
+&lt;label&gt;&lt;input type="radio" name="setchg" value="2" onclick="sets.change(2)"&gt;2&lt;/label&gt;
+&lt;label&gt;&lt;input type="radio" name="setchg" value="3" onclick="sets.change(3)"&gt;3&lt;/label&gt;
+&lt;label&gt;&lt;input type="radio" name="setchg" value="4" onclick="sets.change(4)"&gt;4&lt;/label&gt;
+<em>&lt;label&gt;&lt;input type="radio" name="setchg" value="5" onclick="sets.change(5)"&gt;5&lt;/label&gt;
+&lt;label&gt;&lt;input type="radio" name="setchg" value="6" onclick="sets.change(6)"&gt;6&lt;/label&gt;
+&lt;label&gt;&lt;input type="radio" name="setchg" value="7" onclick="sets.change(7)"&gt;7&lt;/label&gt;
+&lt;label&gt;&lt;input type="radio" name="setchg" value="8" onclick="sets.change(8)"&gt;8&lt;/label&gt;
+&lt;label&gt;&lt;input type="radio" name="setchg" value="9" onclick="sets.change(9)"&gt;9&lt;/label&gt;</em>
+</pre>
+</dd>
+</dl>
+
+<p><em class="file">index.html</em> を上手く書き換えると、
+<em class="file">tool.html</em> の変更を行わなくてもセットを増やせますが、しおりのどうぐばこ編集時に貼り付けデータの一部が失われる原因になるので、
+<em class="file">tool.html</em> も一緒に書き換えるようにしてください。</p>
+
+<p class="nav-tail"><a href="toc.html">目次に戻ります</a></p>
+
+<hr>
+<address>
+Copyright &copy; 2011 by <a href="http://sei.sakuraweb.com/">みなみせい</a> All Rights Reserved.
+</address>
+
+</div><!-- /#all -->
+</body>
+</html>

@@ -1,0 +1,148 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<html lang="ja">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=Shift_JIS">
+<meta http-equiv="Content-Style-Type" content="text/css">
+<link rel="stylesheet" href="common.css" type="text/css">
+<title>きせかえシステム"siori" マニュアル</title>
+</head>
+<body>
+<div id="all">
+
+<h1>きせかえシステム"siori" について</h1>
+
+<h2>はじめに</h2>
+
+<p>きせかえシステム"siori" は、Webブラウザで遊べる着せ替えゲームを作成するソフトです。
+服をマウスでドラッグして動かすタイプの着せ替えゲームを作成することができます。
+Internet Explorer 7.0以降 / Mozilla Firefox などの JavaScript に対応するブラウザで動作します。</p>
+
+<h2>特徴</h2>
+
+<ul>
+<li>画像のグループ化やセット機能・スナップ機能などをサポートしているので、本格的な着せ替えを作ることができます。</li>
+<li>HTML5 Canvasなどの機能に対応しました。画像の透明部分を正確に判定できるようになり、移動の操作がしやすくなりました。</li>
+<li>着せ替え作成ツールが用意されていますので、簡単に作成することができます。</li>
+<li>特定のブラウザに強く依存しませんので、多くのブラウザで着せ替えを楽しめます。</li>
+</ul>
+
+<h2>ファイルの内容</h2>
+
+<p>圧縮ファイルの中には、下記のファイルが含まれています。</p>
+
+<dl class="shrink">
+<dt>siori.js</dt>
+<dd>きせかえシステム"siori" 本体スクリプトファイルです。</dd>
+
+<dt>index.html</dt>
+<dd>着せ替え作成用のテンプレートファイルです。
+しおりのどうぐばこで出力されるデータを、このファイルに貼り付けると着せ替えが完成します。</dd>
+
+<dt>tool.html</dt>
+<dd>着せ替え作成ツール「しおりのどうぐばこ」です。</dd>
+
+<dt>manual</dt>
+<dd>このマニュアルが含まれているフォルダです。中身は全てマニュアル関係のファイルです。</dd>
+</dl>
+
+<h2>動作ブラウザについて</h2>
+
+<p>2011年3月現在、動作確認した環境は次の通りです。○印の場合でも動作の保証はできませんのでご了承ください。<br>
+（○：対応 △：一部問題あり ×：非対応）</p>
+
+<table>
+<tr>
+<th>ＯＳ</th>
+<th>ブラウザ</th>
+<th>siori本体</th>
+<th>どうぐばこ</th>
+</tr>
+
+<tr>
+<td rowspan="1">Windows 7</td>
+<td>Internet Explorer 9.0</td>
+<td>○</td>
+<td>○</td>
+</tr>
+
+<tr>
+<td rowspan="5">Windows XP</td>
+<td>Internet Explorer 6.0 / 7.0 / 8.0</td>
+<td>○</td>
+<td>○</td>
+</tr>
+
+<tr>
+<td>Mozilla Firefox 3.6 / 4.0</td>
+<td>○</td>
+<td>○ (※1)</td>
+</tr>
+
+<tr>
+<td>Google Chrome 10.0</td>
+<td>○</td>
+<td>○ (※1)</td>
+</tr>
+
+<tr>
+<td>Safari 5.0</td>
+<td>○</td>
+<td>○ (※1)</td>
+</tr>
+
+<tr>
+<td>Opera 11</td>
+<td>○</td>
+<td>○</td>
+</tr>
+</table>
+
+<p>※1： リスト項目にファイルをドラッグして新規作成する機能が利用可能です。</p>
+
+<p>服の透明部分を判定する機能は、条件によっては利用できない場合があります。
+詳しくは<a href="note.html#pickcel">セルの透明部分のつかみ判定について</a>をご覧ください。</p>
+
+<h3>しおりのどうぐばこの動作について</h3>
+
+<ul>
+<li>しおりのどうぐばこは、ブラウザによっては完全に動作しない可能性があります。ご了承ください。</li>
+<li>大量のデータを処理するので、なるべく高速なマシンで使用することをおすすめします。</li>
+</ul>
+
+<h2>取り扱いについて</h2>
+
+<ul>
+<li>このスクリプトはフリーソフトウェアです。著作権はみなみせいが有します。</li>
+
+<li>このスクリプトは私用・商用にかかわらず、作者の許可を得ることなく自由に利用することができます。
+利用の際に作者への連絡や、作者のサイトへのリンクは必要ありません。
+ご厚意でのご連絡やリンクはとてもうれしいですが、必須ではありません。</li>
+
+<li>ウェブサイトや同人ソフトなどでの販売物にもご使用いただけます。
+このスクリプトのみを単体で販売することはできません。無料で再配布することは可能です。</li>
+
+<li>スクリプトを改変して使用することは自由です。但しオリジナルの著作権表示を外してはいけません。
+改変したスクリプトを単体で再配布することにも制限はありませんが、オリジナルと区別できるように、
+改変したことを明記するようにしてください。連絡などは特に必要ありません。</li>
+
+<li>サポートやバグ修正・機能追加、ならびにこのスクリプトを使用して発生した損害に対して、作者は責任を負いません。</li>
+</ul>
+
+<h2>謝辞</h2>
+
+<p>この着せ替えスクリプトは
+<a href="http://www.tohoho-web.com/">とほほのＷＷＷ入門</a>
+で公開されているサンプルスクリプトを元に作成され、着せ替えソフト
+<a href="http://www.kiss-wkp.com/" title="WORLD KISS PROJECT">KISS</a>
+の仕様を参考にさせていただいています。この場を借りてお礼申し上げます。</p>
+
+<p class="nav-tail"><a href="toc.html">目次に戻ります</a></p>
+
+<hr>
+<address>
+Copyright &copy; 2011 by <a href="http://sei.sakuraweb.com/">みなみせい</a> All Rights Reserved.
+</address>
+
+</div><!-- /#all -->
+</body>
+</html>
